@@ -1,0 +1,13 @@
+{
+    "name": "Bcaapi",
+    "alias": "bcaapi",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Gateways\\Bcaapi\\Providers\\BcaapiServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
