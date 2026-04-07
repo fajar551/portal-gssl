@@ -21,17 +21,14 @@ class Gateways
 
     private static function isOrderCheckoutGatewayBlackoutActive(): bool
     {
-        // Hide most gateways during 13-29 March (inclusive)
+        // Selaras dengan App\Helpers\Gateway: 13 Mar – 21 Apr 2026 (inklusif)
         $today = date('Y-m-d');
-        return $today >= '2026-03-13' && $today <= '2026-04-07';
+        return $today >= '2026-03-13' && $today <= '2026-04-21';
     }
 
     /**
-     * During blackout window, only allow:
-     * - Manual bank transfer (BCA/Mandiri/Maybank) if present
-     * - PayPal, Stripe, Wise if present
-     *
-     * This function never "adds" gateways; it only filters existing ones.
+     * Saat blackout order checkout: pertahankan VA BCA, Mandiri transfer, QRIS (jika ada);
+     * blokir ccxendit (kartu kredit Xendit). Tidak menambah gateway baru.
      */
     private static function filterOrderCheckoutGateways(array $validgateways): array
     {
@@ -39,24 +36,22 @@ class Gateways
             return $validgateways;
         }
 
-        $alwaysAllow = ['paypal', 'stripe', 'wise'];
         $filtered = [];
 
         foreach ($validgateways as $sysname => $displayName) {
             $key = strtolower((string) $sysname);
             $name = strtolower((string) $displayName);
 
-            if (in_array($key, $alwaysAllow, true)) {
+            if ($key === 'ccxendit') {
+                continue;
+            }
+
+            if ($key === 'bcavaxendit' || $key === 'bcava' || $key === 'mandiritransfer') {
                 $filtered[$sysname] = $displayName;
                 continue;
             }
 
-            // Heuristic for "manual bank transfer BCA/Mandiri/Maybank"
-            $isBankTransfer = strpos($key, 'bank') !== false || strpos($key, 'transfer') !== false || strpos($name, 'bank') !== false || strpos($name, 'transfer') !== false;
-            $isAllowedBank = strpos($key, 'bca') !== false || strpos($key, 'mandiri') !== false || strpos($key, 'maybank') !== false
-                || strpos($name, 'bca') !== false || strpos($name, 'mandiri') !== false || strpos($name, 'maybank') !== false;
-
-            if ($isBankTransfer && $isAllowedBank) {
+            if (strpos($key, 'qris') !== false || strpos($name, 'qris') !== false) {
                 $filtered[$sysname] = $displayName;
             }
         }

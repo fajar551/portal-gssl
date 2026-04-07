@@ -22,17 +22,18 @@ class Gateway
 
     private static function isOrderCheckoutGatewayBlackoutActive(): bool
     {
-        // Hide most gateways during 13-26 March (inclusive)
+        // Sembunyikan sebagian besar gateway: 13 Mar – 21 Apr 2026 (inklusif)
         $today = date('Y-m-d');
-        return $today >= '2026-03-13' && $today <= '2026-04-07';
+        return $today >= '2026-03-13' && $today <= '2026-04-21';
     }
 
     /**
-     * During blackout window, only allow:
-     * - Manual bank transfer (BCA/Mandiri/Maybank) if present
-     * - PayPal, Stripe, Wise if present
-     *
-     * This function never "adds" gateways; it only filters existing ones.
+     * Saat blackout: hanya izinkan yang sudah ada di konfigurasi:
+     * - VA BCA (bcavaxendit dan/atau modul bcava)
+     * - Mandiri transfer (mandiritransfer)
+     * - QRIS (sysname atau nama tampilan mengandung "qris")
+     * Selalu blokir kartu kredit Xendit (ccxendit).
+     * Fungsi ini tidak pernah "menambah" gateway.
      */
     private static function isGatewayAllowedDuringBlackout(string $gatewaySysname, string $gatewayDisplayName = ''): bool
     {
@@ -43,15 +44,19 @@ class Gateway
         $key = strtolower($gatewaySysname);
         $name = strtolower($gatewayDisplayName);
 
-        if (in_array($key, ['paypal', 'stripe', 'wise'], true)) {
+        if ($key === 'ccxendit') {
+            return false;
+        }
+
+        if ($key === 'bcavaxendit' || $key === 'bcava' || $key === 'mandiritransfer') {
             return true;
         }
 
-        $isBankTransfer = strpos($key, 'bank') !== false || strpos($key, 'transfer') !== false || strpos($name, 'bank') !== false || strpos($name, 'transfer') !== false;
-        $isAllowedBank = strpos($key, 'bca') !== false || strpos($key, 'mandiri') !== false || strpos($key, 'maybank') !== false
-            || strpos($name, 'bca') !== false || strpos($name, 'mandiri') !== false || strpos($name, 'maybank') !== false;
+        if (strpos($key, 'qris') !== false || strpos($name, 'qris') !== false) {
+            return true;
+        }
 
-        return $isBankTransfer && $isAllowedBank;
+        return false;
     }
 
     public static function CheckActiveGateway()
