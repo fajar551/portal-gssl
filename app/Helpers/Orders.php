@@ -2830,6 +2830,11 @@ class Orders
 				}
 			}
 		}
+		foreach (array_keys($gatewaysList) as $module) {
+			if (!\App\Helpers\Gateway::isAllowedShoppingCartPaymentGateway($module)) {
+				unset($gatewaysList[$module]);
+			}
+		}
 		return $gatewaysList;
 	}
 

@@ -59,6 +59,17 @@ class Gateway
         return false;
     }
 
+    /**
+     * Metode pembayaran yang diizinkan di order form (keranjang / checkout).
+     * Hanya BCA VA (bcavaxendit dan/atau bcava) dan Mandiri Transfer.
+     */
+    public static function isAllowedShoppingCartPaymentGateway(string $gatewaySysname): bool
+    {
+        $key = strtolower($gatewaySysname);
+
+        return $key === 'bcavaxendit' || $key === 'bcava' || $key === 'mandiritransfer';
+    }
+
     public static function CheckActiveGateway()
     {
         return count(self::GetGatewaysArray()) > 0;
