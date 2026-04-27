@@ -1,0 +1,13 @@
+{
+    "name": "Directadmin",
+    "alias": "directadmin",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Servers\\Directadmin\\Providers\\DirectadminServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

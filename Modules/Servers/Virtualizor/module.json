@@ -1,0 +1,13 @@
+{
+    "name": "Virtualizor",
+    "alias": "virtualizor",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Servers\\Virtualizor\\Providers\\VirtualizorServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

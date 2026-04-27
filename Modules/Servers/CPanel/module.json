@@ -1,0 +1,14 @@
+{
+  "name": "CPanel",
+  "alias": "cpanel",
+  "description": "CPanel integration module",
+  "keywords": [],
+  "priority": 0,
+  "providers": [
+    "Modules\\Servers\\CPanel\\Providers\\CPanelServiceProvider",
+    "Modules\\Servers\\CPanel\\Providers\\RouteServiceProvider"
+  ],
+  "aliases": {},
+  "files": [],
+  "requires": []
+}

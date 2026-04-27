@@ -1,0 +1,13 @@
+{
+    "name": "ChangeDatePaidInvoice",
+    "alias": "changedatepaidinvoice",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Addons\\ChangeDatePaidInvoice\\Providers\\ChangeDatePaidInvoiceServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

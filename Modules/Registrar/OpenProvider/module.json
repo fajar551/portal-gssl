@@ -1,0 +1,13 @@
+{
+    "name": "OpenProvider",
+    "alias": "openprovider",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Registrar\\OpenProvider\\Providers\\OpenProviderServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

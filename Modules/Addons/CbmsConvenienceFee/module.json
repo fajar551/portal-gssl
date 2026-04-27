@@ -1,0 +1,14 @@
+{
+    "name": "CbmsConvenienceFee",
+    "alias": "cbmsconveniencefee",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Addons\\CbmsConvenienceFee\\Providers\\CbmsConvenienceFeeServiceProvider",
+        "Modules\\Addons\\CbmsConvenienceFee\\Providers\\EventServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

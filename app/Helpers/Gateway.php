@@ -22,9 +22,7 @@ class Gateway
 
     private static function isOrderCheckoutGatewayBlackoutActive(): bool
     {
-        // Sembunyikan sebagian besar gateway: 13 Mar – 21 Apr 2026 (inklusif)
-        $today = date('Y-m-d');
-        return $today >= '2026-03-13' && $today <= '2026-04-21';
+        return false;
     }
 
     /**
@@ -61,13 +59,10 @@ class Gateway
 
     /**
      * Metode pembayaran yang diizinkan di order form (keranjang / checkout).
-     * Hanya BCA VA (bcavaxendit dan/atau bcava) dan Mandiri Transfer.
      */
     public static function isAllowedShoppingCartPaymentGateway(string $gatewaySysname): bool
     {
-        $key = strtolower($gatewaySysname);
-
-        return $key === 'bcavaxendit' || $key === 'bcava' || $key === 'mandiritransfer';
+        return true;
     }
 
     public static function CheckActiveGateway()

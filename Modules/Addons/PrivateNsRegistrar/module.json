@@ -1,0 +1,13 @@
+{
+    "name": "PrivateNsRegistrar",
+    "alias": "privatensregistrar",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Addons\\PrivateNsRegistrar\\Providers\\PrivateNsRegistrarServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

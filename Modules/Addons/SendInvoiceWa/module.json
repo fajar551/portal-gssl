@@ -1,0 +1,13 @@
+{
+    "name": "SendInvoiceWa",
+    "alias": "sendinvoicewa",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Addons\\SendInvoiceWa\\Providers\\SendInvoiceWaServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

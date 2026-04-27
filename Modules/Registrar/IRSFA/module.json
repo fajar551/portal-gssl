@@ -1,0 +1,13 @@
+{
+    "name": "IRSFA",
+    "alias": "irsfa",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Registrar\\IRSFA\\Providers\\IRSFAServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

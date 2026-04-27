@@ -1,0 +1,13 @@
+{
+    "name": "SellDomain",
+    "alias": "selldomain",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Addons\\SellDomain\\Providers\\SellDomainServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

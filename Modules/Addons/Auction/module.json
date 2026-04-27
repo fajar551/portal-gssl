@@ -1,0 +1,13 @@
+{
+    "name": "Auction",
+    "alias": "auction",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Addons\\Auction\\Providers\\AuctionServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

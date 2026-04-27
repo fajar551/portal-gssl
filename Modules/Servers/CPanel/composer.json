@@ -1,0 +1,30 @@
+{
+    "name": "cbms/cpanel",
+    "description": "CPanel integration module",
+    "type": "laravel-module",
+    "require": {
+      "php": "^7.4",
+      "guzzlehttp/guzzle": "^6.3"
+    },
+    "authors": [
+        {
+            "name": "Fajar Habib Zaelani",
+            "email": "fajar.habib@qwords.co.id"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Servers\\CPanel\\Providers\\CPanelServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+      "psr-4": {
+        "Modules\\Servers\\CPanel\\": ""
+      }
+    }
+}

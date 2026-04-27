@@ -159,12 +159,12 @@ class Gateways
             if (!empty($result2)) {
                 // Ambil nilai disabled gateways dan pecah menjadi array
                 $disabledGateways = explode(",", $result2[0]->disabled);
-                
+
                 // Loop melalui disabled gateways
                 foreach ($disabledGateways as $gateway) {
                     // Trimming untuk menghapus spasi
                     $gateway = trim($gateway);
-                    
+
                     // Pastikan gateway adalah string dan ada di validgateways
                     if ($gateway && array_key_exists($gateway, $validgateways) && $gateway != $invoicegateway) {
                         unset($validgateways[$gateway]);
@@ -174,7 +174,7 @@ class Gateways
                 // Kondisi ketika tidak ada metode pembayaran yang didapatkan
                 // Misalnya, tambahkan log atau berikan metode pembayaran default
                 Log::warning("Tidak ada metode pembayaran ditemukan untuk invoice ID: " . $invoiceid);
-                
+
                 // Opsional: Tambahkan metode pembayaran default
                 if (empty($validgateways)) {
                     $defaultGateway = $this->getFirstAvailableGateway();
@@ -183,7 +183,7 @@ class Gateways
                     }
                 }
             }
-            
+
             }
             // if (array_key_exists($invoicegateway, $validgateways) === false) {
             //     $validgateways[$invoicegateway] = \App\Models\Paymentgateway::where(array("setting" => "name", "gateway" => $invoicegateway))->value("value") ?? "";
